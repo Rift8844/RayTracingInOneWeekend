@@ -2,15 +2,15 @@
 #define RAYH
 
 struct Ray {
-	Vec3 origin;
-	Vec3 direction;
+	Vec3 org;
+	Vec3 dir;
 
-	Ray(const Vec3& org, const Vec3& dir) :
-	origin{org}, direction{dir} {}
+	Ray(const Vec3& a, const Vec3& b) :
+	org{a}, dir{b} {}
 
-	Vec3 origin() const { return origin; }
-	Vec3 direction() const { return direction; }
-	Vec3 pointAtParam(float t) const { return origin + direction*t; }
+	Vec3 origin() const { return org; }
+	Vec3 direction() const { return dir; }
+	Vec3 pointAtParam(float t) const { return org + dir*t; }
 };
 
 

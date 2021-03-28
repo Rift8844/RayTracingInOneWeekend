@@ -1,5 +1,5 @@
 //something called a "header guard"?
-#ifdef VECH
+#ifndef VECH
 #define VECH
 
 #include <math.h>

@@ -19,7 +19,7 @@ int main() {
 			float u = float(i) / float (width);
 			float v = float(j) / float(height);
 
-			Ray r(origin, lowerLeftcorner + u*horizontal + u*vertical);
+			Ray r(origin, lowerLeftCorner + u*horizontal + u*vertical);
 			Vec3 col = color(r);
 
 			int ir = int(255.99*col[0]);
