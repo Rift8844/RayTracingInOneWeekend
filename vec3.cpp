@@ -29,7 +29,7 @@ inline Vec3 operator*(Vec3 const& v, float t) {
 inline Vec3 operator*(float t, Vec3 const& v) {
 	return Vec3(v[0] * t, v[1] * t, v[2] * t);
 }
-inline Vec3 operator/(float t, Vec3 const& v) {
+inline Vec3 operator/(Vec3 const& v, float t) {
 	return Vec3(v[0] / t, v[1] / t, v[2] / t);
 }
 

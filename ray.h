@@ -13,5 +13,7 @@ struct Ray {
 	Vec3 pointAtParam(float t) const { return org + dir*t; }
 };
 
+Vec3 color(Ray const& ray);
+
 
 #endif

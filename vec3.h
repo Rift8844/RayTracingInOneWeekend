@@ -45,5 +45,17 @@ struct Vec3 {
 
 };
 
+Vec3 operator+(Vec3 const& v1, Vec3 const& v2);
+Vec3 operator-(Vec3 const& v1, Vec3 const& v2);
+Vec3 operator*(Vec3 const& v1, Vec3 const& v2);
+Vec3 operator/(Vec3 const& v1, Vec3 const& v2);
+
+Vec3 operator*(Vec3 const& v, float t);
+Vec3 operator*(float t, Vec3 const& v);
+Vec3 operator/(Vec3 const& v, float t);
+float dot(Vec3 const& v1, Vec3 const& v2);
+Vec3 cross(Vec3 const& v1, Vec3 const& v2);
+
+inline Vec3 unitVector(Vec3 v);
 
 #endif
