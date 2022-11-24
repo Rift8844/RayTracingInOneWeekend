@@ -52,7 +52,8 @@ public:
 	}
 };
 
-using pt3 = vec3;
+
+using point3 = vec3;
 using color = vec3;
 
 
@@ -77,9 +78,18 @@ inline vec3 operator*(vec3 const& v, vec3 const& w) {
 	return vec3(v.x()*w.x(), v.y()*w.y(), v.z()*w.z());
 }
 
+inline vec3 operator*(vec3 const& v, double t) {
+	return vec3(v.x()*t, v.y()*t, v.z()*t);
+}
+
+
+inline vec3 operator*(double t, vec3 const& v) {
+	return v*t;
+}
+
 inline vec3 operator/(vec3 v, double const t) {
 	//Why not v/t ?
-	v *= 1/t;
+	v = (1/t) * v;
 	return v;
 }
 
