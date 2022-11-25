@@ -53,7 +53,7 @@ int main() {
 	//Image
 	auto const aspectRatio = 16.0 / 9.0;
 	//Consider renaming to imageWidth (and height)???
-	int const width =  4096;
+	int const width =  512;
 	int const height = static_cast<int>(width / aspectRatio);
 
 	//Camera
