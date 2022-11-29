@@ -9,7 +9,7 @@ bool Sphere::hit(ray const& r, double tMin, double tMax, HitRecord& record) cons
 	auto halfB = dot(oc, r.direction());
 	auto c = oc.sqrLen() - radius*radius;
 
-	auto discrim = halfB*halfB;
+	auto discrim = halfB*halfB - a*c;
 	if (discrim < 0) 
 		return false;
 
