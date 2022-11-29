@@ -1,9 +1,9 @@
 
+#pragma once
+
 #include <cmath>
 #include <iostream>
 #include <array>
-
-#pragma once
 
 using std::sqrt;
 
@@ -89,8 +89,7 @@ inline vec3 operator*(double t, vec3 const& v) {
 
 inline vec3 operator/(vec3 v, double const t) {
 	//Why not v/t ?
-	v = (1/t) * v;
-	return v;
+	return (1/t) * v;
 }
 
 inline double dot(vec3 const& v, vec3 const& w) {
@@ -98,9 +97,11 @@ inline double dot(vec3 const& v, vec3 const& w) {
 }
 
 inline vec3 cross(vec3 const& v, vec3 const& w) {
-	return vec3(v.y() * w.z() - v.z() * w.y(),
+	return vec3(
+		v.y() * w.z() - v.z() * w.y(),
 		v.z() * w.x() - v.x() * w.z(),
-		v.x() * w.y() - v.y() * w.x());
+		v.x() * w.y() - v.y() * w.x()
+		);
 }
 
 inline vec3 unitVec(vec3 v) {

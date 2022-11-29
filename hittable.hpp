@@ -20,12 +20,10 @@ struct HitRecord {
 };
 
 class hittable {
-protected:
-	inline static HitRecord record{};
-
 public:
+	hittable() {};
 
-	virtual bool hit(ray const& r, double tMin, double tMax) = 0;
+	virtual bool hit(ray const& r, double tMin, double tMax, HitRecord& record) const = 0;
 };
 
 
@@ -34,8 +32,8 @@ class hittableList : public hittable {
 	std::vector<std::shared_ptr<hittable>> objects;
 
 public:
-	bool hit(ray const& r, double tMin, double tMax);
-	hittableList();
+	bool hit(ray const& r, double tMin, double tMax, HitRecord& record) const;
+	hittableList() {};
 	hittableList(std::shared_ptr<hittable> object) { add(object); }
 
 	void clear() { objects.clear(); }

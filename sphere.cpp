@@ -3,7 +3,7 @@
 
 using std::sqrt;
 
-bool Sphere::hit(ray const& r, double tMin, double tMax) {
+bool Sphere::hit(ray const& r, double tMin, double tMax, HitRecord& record) const {
 	vec3 oc = r.origin() - center;
 	auto a = r.direction().sqrLen();
 	auto halfB = dot(oc, r.direction());

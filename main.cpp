@@ -1,9 +1,13 @@
 #include <iostream>
 #include <iomanip>
+#include <memory>
 
 #include "vec3.hpp"
 #include "color.hpp"
 #include "ray.hpp"
+#include "hittable.hpp"
+#include "sphere.hpp"
+#include "utility.hpp"
 
 namespace StdColor {
 	color Red(1, 0, 0);
@@ -18,15 +22,15 @@ using namespace StdColor;
 //idk ig I like this forward declarations lol
 double hitSphere(point3 const& center, double radius, ray const& r);
 
-color rayColor(ray const& r) {
-	auto t = hitSphere(point3(0, 0, -1), 0.5, r);
-	if (t > 0.0) {
-		vec3 N = unitVec(r.at(t) - vec3(0, 0, -1));
-		return 0.5*color(N.x()+1, N.y()+1, N.z()+1);
+color rayColor(ray const& r, hittable const& world) {
+	HitRecord rec;
+
+	if (world.hit(r, 0, inf, rec)) {
+		return 0.5*color(rec.normal + White);
 	}
 
 	vec3 unitDirection = unitVec(r.direction());
-	t = 0.5*(unitDirection.y() + 1.0);
+	auto t = 0.5*(unitDirection.y() + 1.0);
 
 	return (1.0-t)*White + t*color(0.5, 0.7, 1.0);
 }
@@ -56,6 +60,11 @@ int main() {
 	int const width =  512;
 	int const height = static_cast<int>(width / aspectRatio);
 
+	//World
+	hittableList world;
+	world.add(std::make_shared<Sphere>(point3{0, 0, -1}, 0.5));
+	world.add(std::make_shared<Sphere>(point3{0, -100.5, -1}, 100));
+
 	//Camera
 	double viewportH = 2.0;
 	double viewportW = aspectRatio * viewportH;
@@ -83,7 +92,7 @@ int main() {
 
 			//Second argument transposes pixel position into point 
 			ray r(origin, leftCorner + u*horizontal + v*vertical - origin);
-			color pixelColor = rayColor(r);
+			color pixelColor = rayColor(r, world);
 			
 			outColor(std::cout, pixelColor);
 		}

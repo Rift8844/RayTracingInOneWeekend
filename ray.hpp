@@ -1,7 +1,8 @@
 
-#include "vec3.hpp"
-
 #pragma once
+
+
+#include "vec3.hpp"
 
 class ray {
 	point3 orig;
